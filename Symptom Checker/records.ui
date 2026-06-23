@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RecordsWindow</class>
+ <widget class="QMainWindow" name="RecordsWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>950</width><height>680</height></rect>
+  </property>
+  <property name="windowTitle"><string>Smart Symptom Checker – All Patient Records</string></property>
+
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #e0f7f4, stop:1 #b2dfdb);
+font-family: Segoe UI;
+    </string>
+   </property>
+
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing"><number>12</number></property>
+    <property name="leftMargin"><number>30</number></property>
+    <property name="topMargin"><number>20</number></property>
+    <property name="rightMargin"><number>30</number></property>
+    <property name="bottomMargin"><number>20</number></property>
+
+    <!-- HEADER -->
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="minimumSize"><size><width>0</width><height>70</height></size></property>
+      <property name="styleSheet">
+       <string notr="true">QFrame { background:white; border-radius:18px; }</string>
+      </property>
+      <layout class="QHBoxLayout" name="headerLayout">
+       <property name="leftMargin"><number>18</number></property>
+       <property name="rightMargin"><number>18</number></property>
+       <item>
+        <widget class="QLabel" name="pageTitle">
+         <property name="text"><string>📋 All Patient Records</string></property>
+         <property name="styleSheet">
+          <string notr="true">font-size:22px; font-weight:bold; color:#00796B;</string>
+         </property>
+        </widget>
+       </item>
+       <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <item>
+        <widget class="QLineEdit" name="searchRecordsEdit">
+         <property name="minimumSize"><size><width>220</width><height>38</height></size></property>
+         <property name="placeholderText"><string>🔍  Search by patient name...</string></property>
+         <property name="styleSheet">
+          <string notr="true">
+QLineEdit { border:2px solid #CCC; border-radius:10px; padding-left:12px; font-size:13px; background:#f5f5f5; }
+QLineEdit:focus { border:2px solid #00796B; background:white; }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="backMainButton">
+         <property name="text"><string>← Back to Main</string></property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton { background:#E0F2F1; color:#00796B; font-size:13px; font-weight:bold; border:none; border-radius:10px; padding:8px 16px; }
+QPushButton:hover { background:#B2DFDB; }
+          </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- STATS ROW -->
+    <item>
+     <layout class="QHBoxLayout" name="statsRow">
+      <property name="spacing"><number>12</number></property>
+
+      <item>
+       <widget class="QFrame" name="totalCard">
+        <property name="minimumSize"><size><width>0</width><height>70</height></size></property>
+        <property name="styleSheet">
+         <string notr="true">QFrame { background:white; border-radius:14px; }</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <property name="leftMargin"><number>16</number></property>
+         <item>
+          <widget class="QLabel" name="totalLbl">
+           <property name="text"><string>Total Records</string></property>
+           <property name="styleSheet"><string notr="true">font-size:12px; color:#888;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="totalCount">
+           <property name="text"><string>0</string></property>
+           <property name="styleSheet"><string notr="true">font-size:24px; font-weight:bold; color:#00796B;</string></property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QFrame" name="todayCard">
+        <property name="minimumSize"><size><width>0</width><height>70</height></size></property>
+        <property name="styleSheet">
+         <string notr="true">QFrame { background:white; border-radius:14px; }</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <property name="leftMargin"><number>16</number></property>
+         <item>
+          <widget class="QLabel" name="todayLbl">
+           <property name="text"><string>Today's Checks</string></property>
+           <property name="styleSheet"><string notr="true">font-size:12px; color:#888;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="todayCount">
+           <property name="text"><string>0</string></property>
+           <property name="styleSheet"><string notr="true">font-size:24px; font-weight:bold; color:#009688;</string></property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+
+      <item>
+       <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="clearAllButton">
+        <property name="minimumSize"><size><width>140</width><height>50</height></size></property>
+        <property name="text"><string>🗑 Clear All Records</string></property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton { background:#ffebee; color:#c62828; font-size:13px; font-weight:bold; border:none; border-radius:12px; }
+QPushButton:hover { background:#ffcdd2; }
+         </string>
+        </property>
+       </widget>
+      </item>
+
+     </layout>
+    </item>
+
+    <!-- TABLE -->
+    <item>
+     <widget class="QFrame" name="tableFrame">
+      <property name="styleSheet">
+       <string notr="true">QFrame { background:white; border-radius:18px; }</string>
+      </property>
+      <layout class="QVBoxLayout" name="tableFrameLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QTableWidget" name="recordsTable">
+         <property name="minimumSize"><size><width>0</width><height>400</height></size></property>
+         <property name="styleSheet">
+          <string notr="true">
+QTableWidget {
+  border:none;
+  font-size:13px;
+  gridline-color:#f0f0f0;
+  border-radius:18px;
+}
+QTableWidget::item {
+  padding:10px 8px;
+  color:#333;
+}
+QTableWidget::item:selected {
+  background:#E0F2F1;
+  color:#00796B;
+}
+QHeaderView::section {
+  background:#00796B;
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+  padding:10px 8px;
+  border:none;
+}
+QScrollBar:vertical {
+  width:8px;
+  background:#f5f5f5;
+  border-radius:4px;
+}
+QScrollBar::handle:vertical {
+  background:#B2DFDB;
+  border-radius:4px;
+}
+          </string>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="alternatingRowColors"><bool>true</bool></property>
+         <property name="columnCount"><number>6</number></property>
+         <row/>
+         <column><property name="text"><string>#</string></property></column>
+         <column><property name="text"><string>Patient Name</string></property></column>
+         <column><property name="text"><string>Age / Gender</string></property></column>
+         <column><property name="text"><string>Condition Detected</string></property></column>
+         <column><property name="text"><string>Symptoms</string></property></column>
+         <column><property name="text"><string>Date &amp; Time</string></property></column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- EMPTY LABEL -->
+    <item>
+     <widget class="QLabel" name="emptyLabel">
+      <property name="text"><string>No records found. Start checking symptoms to build patient history.</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet">
+       <string notr="true">font-size:14px; color:#AAAAAA; padding:20px;</string>
+      </property>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

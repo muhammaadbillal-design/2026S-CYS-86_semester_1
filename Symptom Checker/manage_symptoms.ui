@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ManageSymptomsWindow</class>
+ <widget class="QMainWindow" name="ManageSymptomsWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>850</width><height>650</height></rect>
+  </property>
+  <property name="windowTitle"><string>Doctor Panel – Manage Symptoms</string></property>
+
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #e3f2fd, stop:1 #bbdefb);
+font-family: Segoe UI;
+    </string>
+   </property>
+
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing"><number>12</number></property>
+    <property name="leftMargin"><number>30</number></property>
+    <property name="topMargin"><number>20</number></property>
+    <property name="rightMargin"><number>30</number></property>
+    <property name="bottomMargin"><number>20</number></property>
+
+    <!-- HEADER -->
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="minimumSize"><size><width>0</width><height>65</height></size></property>
+      <property name="styleSheet"><string notr="true">QFrame { background:white; border-radius:18px; }</string></property>
+      <layout class="QHBoxLayout">
+       <property name="leftMargin"><number>18</number></property>
+       <property name="rightMargin"><number>18</number></property>
+       <item>
+        <widget class="QLabel">
+         <property name="text"><string>⚙ Manage Symptoms</string></property>
+         <property name="styleSheet"><string notr="true">font-size:22px; font-weight:bold; color:#1565C0;</string></property>
+        </widget>
+       </item>
+       <item><spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <item>
+        <widget class="QPushButton" name="backButton">
+         <property name="text"><string>← Back to Dashboard</string></property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton { background:#E3F2FD; color:#1565C0; font-size:13px; font-weight:bold; border:none; border-radius:10px; padding:8px 16px; }
+QPushButton:hover { background:#BBDEFB; }
+          </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- CONTENT: list + add panel side by side -->
+    <item>
+     <layout class="QHBoxLayout" name="contentRow">
+      <property name="spacing"><number>14</number></property>
+
+      <!-- SYMPTOMS LIST -->
+      <item>
+       <widget class="QFrame" name="listFrame">
+        <property name="styleSheet"><string notr="true">QFrame { background:white; border-radius:18px; }</string></property>
+        <layout class="QVBoxLayout">
+         <property name="leftMargin"><number>18</number></property>
+         <property name="topMargin"><number>16</number></property>
+         <property name="rightMargin"><number>18</number></property>
+         <property name="bottomMargin"><number>16</number></property>
+
+         <item>
+          <widget class="QLabel">
+           <property name="text"><string>Current Symptoms</string></property>
+           <property name="styleSheet"><string notr="true">font-size:18px; font-weight:bold; color:#333;</string></property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QListWidget" name="symptomsList">
+           <property name="styleSheet">
+            <string notr="true">
+QListWidget { border:1px solid #E0E0E0; border-radius:10px; font-size:14px; padding:4px; }
+QListWidget::item { padding:8px; border-bottom:1px solid #f0f0f0; }
+QListWidget::item:selected { background:#E3F2FD; color:#1565C0; border-radius:6px; }
+            </string>
+           </property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QPushButton" name="deleteSymptomButton">
+           <property name="minimumSize"><size><width>0</width><height>44</height></size></property>
+           <property name="text"><string>🗑 Delete Selected Symptom</string></property>
+           <property name="styleSheet">
+            <string notr="true">
+QPushButton { background:#ffebee; color:#c62828; font-size:13px; font-weight:bold; border:none; border-radius:10px; }
+QPushButton:hover { background:#ffcdd2; }
+            </string>
+           </property>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+      <!-- ADD SYMPTOM PANEL -->
+      <item>
+       <widget class="QFrame" name="addFrame">
+        <property name="maximumSize"><size><width>340</width><height>16777215</height></size></property>
+        <property name="styleSheet"><string notr="true">QFrame { background:white; border-radius:18px; }</string></property>
+        <layout class="QVBoxLayout">
+         <property name="leftMargin"><number>18</number></property>
+         <property name="topMargin"><number>16</number></property>
+         <property name="rightMargin"><number>18</number></property>
+         <property name="bottomMargin"><number>16</number></property>
+
+         <item>
+          <widget class="QLabel">
+           <property name="text"><string>Add New Symptom</string></property>
+           <property name="styleSheet"><string notr="true">font-size:18px; font-weight:bold; color:#333;</string></property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QLabel">
+           <property name="text"><string>Symptom Key (no spaces, e.g. backpain)</string></property>
+           <property name="styleSheet"><string notr="true">font-size:12px; color:#666; font-weight:bold;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="symptomKeyEdit">
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+           <property name="placeholderText"><string>e.g. backpain</string></property>
+           <property name="styleSheet">
+            <string notr="true">
+QLineEdit { border:2px solid #DDD; border-radius:10px; padding-left:12px; font-size:14px; background:white; }
+QLineEdit:focus { border:2px solid #1565C0; }
+            </string>
+           </property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QLabel">
+           <property name="text"><string>Display Label (with emoji, e.g. 🔙 Back Pain)</string></property>
+           <property name="styleSheet"><string notr="true">font-size:12px; color:#666; font-weight:bold;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="symptomLabelEdit">
+           <property name="minimumSize"><size><width>0</width><height>42</height></size></property>
+           <property name="placeholderText"><string>e.g. 🔙 Back Pain</string></property>
+           <property name="styleSheet">
+            <string notr="true">
+QLineEdit { border:2px solid #DDD; border-radius:10px; padding-left:12px; font-size:14px; background:white; }
+QLineEdit:focus { border:2px solid #1565C0; }
+            </string>
+           </property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QLabel" name="addStatusLabel">
+           <property name="text"><string></string></property>
+           <property name="styleSheet"><string notr="true">font-size:12px; color:#e53935;</string></property>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QPushButton" name="addSymptomButton">
+           <property name="minimumSize"><size><width>0</width><height>46</height></size></property>
+           <property name="text"><string>+ Add Symptom</string></property>
+           <property name="styleSheet">
+            <string notr="true">
+QPushButton { background:#1565C0; color:white; font-size:14px; font-weight:bold; border:none; border-radius:10px; }
+QPushButton:hover { background:#1976D2; }
+            </string>
+           </property>
+          </widget>
+         </item>
+
+         <item><spacer><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+
+         <item>
+          <widget class="QLabel">
+           <property name="text"><string>ℹ️ Note: Symptom changes apply to the symptom selection screen shown to patients.</string></property>
+           <property name="wordWrap"><bool>true</bool></property>
+           <property name="styleSheet"><string notr="true">font-size:11px; color:#888; background:#f5f5f5; padding:8px; border-radius:8px;</string></property>
+          </widget>
+         </item>
+
+        </layout>
+       </widget>
+      </item>
+
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

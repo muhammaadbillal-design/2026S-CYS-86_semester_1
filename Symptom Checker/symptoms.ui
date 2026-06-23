@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SymptomsWindow</class>
+ <widget class="QMainWindow" name="SymptomsWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>900</width><height>700</height></rect>
+  </property>
+  <property name="windowTitle"><string>Smart Symptom Checker – Select Symptoms</string></property>
+
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #e0f7f4, stop:1 #b2dfdb);
+font-family: Segoe UI;
+    </string>
+   </property>
+
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing"><number>12</number></property>
+    <property name="leftMargin"><number>30</number></property>
+    <property name="topMargin"><number>20</number></property>
+    <property name="rightMargin"><number>30</number></property>
+    <property name="bottomMargin"><number>20</number></property>
+
+    <!-- HEADER -->
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="minimumSize"><size><width>0</width><height>70</height></size></property>
+      <property name="styleSheet">
+       <string notr="true">QFrame { background:white; border-radius:18px; }</string>
+      </property>
+      <layout class="QHBoxLayout" name="headerLayout">
+       <property name="leftMargin"><number>18</number></property>
+       <property name="rightMargin"><number>18</number></property>
+       <item>
+        <widget class="QLabel" name="appTitle">
+         <property name="text"><string>🩺 Smart Symptom Checker</string></property>
+         <property name="styleSheet">
+          <string notr="true">font-size:22px; font-weight:bold; color:#00796B;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hSpacer">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="userGreetLabel">
+         <property name="text"><string>Hello, Patient 👋</string></property>
+         <property name="styleSheet">
+          <string notr="true">font-size:14px; color:#555; font-weight:bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logoutButton">
+         <property name="minimumSize"><size><width>110</width><height>38</height></size></property>
+         <property name="maximumSize"><size><width>130</width><height>38</height></size></property>
+         <property name="text"><string>🚪 Logout</string></property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton { background:#e53935; color:white; font-size:13px; font-weight:bold; border:none; border-radius:10px; padding:0 14px; }
+QPushButton:hover { background:#c62828; }
+          </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- TITLE + SEARCH ROW -->
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QLabel" name="headingLabel">
+        <property name="text"><string>How are you feeling today?</string></property>
+        <property name="styleSheet">
+         <string notr="true">font-size:26px; font-weight:bold; color:#222;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="hSpacer2"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="searchBar">
+        <property name="minimumSize"><size><width>220</width><height>40</height></size></property>
+        <property name="placeholderText"><string>🔍  Search symptoms...</string></property>
+        <property name="styleSheet">
+         <string notr="true">
+QLineEdit { background:white; border-radius:12px; padding-left:14px; font-size:14px; border:2px solid #CCCCCC; }
+QLineEdit:focus { border:2px solid #00796B; }
+         </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- PATIENT INFO ROW -->
+    <item>
+     <widget class="QFrame" name="patientInfoFrame">
+      <property name="minimumSize"><size><width>0</width><height>55</height></size></property>
+      <property name="styleSheet">
+       <string notr="true">QFrame { background:white; border-radius:14px; }</string>
+      </property>
+      <layout class="QHBoxLayout" name="infoLayout">
+       <property name="leftMargin"><number>16</number></property>
+       <property name="rightMargin"><number>16</number></property>
+       <item>
+        <widget class="QLabel" name="patientNameDisplay">
+         <property name="text"><string>👤  Patient: —</string></property>
+         <property name="styleSheet"><string notr="true">font-size:14px; color:#444; font-weight:bold;</string></property>
+        </widget>
+       </item>
+       <item>
+        <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="dateLabel">
+         <property name="text"><string>📅  Date: —</string></property>
+         <property name="styleSheet"><string notr="true">font-size:13px; color:#666;</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- SYMPTOMS GROUP -->
+    <item>
+     <widget class="QFrame" name="symptomBoxFrame">
+      <property name="styleSheet">
+       <string notr="true">QFrame { background:white; border-radius:20px; }</string>
+      </property>
+      <layout class="QVBoxLayout" name="symptomBoxLayout">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="topMargin"><number>16</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <property name="bottomMargin"><number>16</number></property>
+
+       <item>
+        <widget class="QLabel" name="symptomSectionTitle">
+         <property name="text"><string>Select Your Symptoms</string></property>
+         <property name="styleSheet">
+          <string notr="true">font-size:18px; font-weight:bold; color:#333;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="symptomHint">
+         <property name="text"><string>Tick all symptoms you are currently experiencing:</string></property>
+         <property name="styleSheet"><string notr="true">font-size:12px; color:#888;</string></property>
+        </widget>
+       </item>
+
+       <item>
+        <layout class="QGridLayout" name="checkboxGrid">
+         <item row="0" column="0"><widget class="QCheckBox" name="fever"><property name="text"><string>🌡️  Fever</string></property></widget></item>
+         <item row="0" column="1"><widget class="QCheckBox" name="cough"><property name="text"><string>😷  Cough</string></property></widget></item>
+         <item row="0" column="2"><widget class="QCheckBox" name="fatigue"><property name="text"><string>😴  Fatigue</string></property></widget></item>
+
+         <item row="1" column="0"><widget class="QCheckBox" name="headache"><property name="text"><string>🤕  Headache</string></property></widget></item>
+         <item row="1" column="1"><widget class="QCheckBox" name="sorethroat"><property name="text"><string>🤒  Sore Throat</string></property></widget></item>
+         <item row="1" column="2"><widget class="QCheckBox" name="nausea"><property name="text"><string>🤢  Nausea</string></property></widget></item>
+
+         <item row="2" column="0"><widget class="QCheckBox" name="vomiting"><property name="text"><string>🤮  Vomiting</string></property></widget></item>
+         <item row="2" column="1"><widget class="QCheckBox" name="chestpain"><property name="text"><string>💔  Chest Pain</string></property></widget></item>
+         <item row="2" column="2"><widget class="QCheckBox" name="dizziness"><property name="text"><string>😵  Dizziness</string></property></widget></item>
+
+         <item row="3" column="0"><widget class="QCheckBox" name="abdominalpain"><property name="text"><string>🤲  Abdominal Pain</string></property></widget></item>
+         <item row="3" column="1"><widget class="QCheckBox" name="shortbreath"><property name="text"><string>🫁  Shortness of Breath</string></property></widget></item>
+         <item row="3" column="2"><widget class="QCheckBox" name="bodypain"><property name="text"><string>🦴  Body Pain</string></property></widget></item>
+
+         <item row="4" column="0"><widget class="QCheckBox" name="anxiety"><property name="text"><string>😰  Anxiety</string></property></widget></item>
+         <item row="4" column="1"><widget class="QCheckBox" name="rash"><property name="text"><string>🔴  Skin Rash</string></property></widget></item>
+         <item row="4" column="2"><widget class="QCheckBox" name="diarrhea"><property name="text"><string>🚽  Diarrhea</string></property></widget></item>
+        </layout>
+       </item>
+
+       <item>
+        <widget class="QLabel" name="selectedCountLabel">
+         <property name="text"><string>Selected: 0 symptoms</string></property>
+         <property name="styleSheet"><string notr="true">font-size:13px; color:#00796B; font-weight:bold;</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- BOTTOM BUTTONS -->
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QPushButton" name="clearButton">
+        <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
+        <property name="text"><string>Clear All</string></property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton { background:white; color:#00796B; font-size:15px; font-weight:bold; border:2px solid #00796B; border-radius:14px; }
+QPushButton:hover { background:#E0F2F1; }
+         </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="predictButton">
+        <property name="minimumSize"><size><width>0</width><height>50</height></size></property>
+        <property name="text"><string>Predict Disease →</string></property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton { background-color:#009688; color:white; font-size:16px; font-weight:bold; border-radius:14px; border:none; }
+QPushButton:hover { background-color:#00796B; }
+         </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
